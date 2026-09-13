@@ -3,7 +3,7 @@ import crypto from "node:crypto";
 import { env } from "./env.js";
 
 const configured=Boolean(env("CLICKHOUSE_URL"));
-const client=createClient({url:env("CLICKHOUSE_URL")??"http://localhost:8123",username:env("CLICKHOUSE_USER")??"default",password:env("CLICKHOUSE_PASSWORD"),database:env("CLICKHOUSE_DATABASE")??"hotroom",request_timeout:1500,application:"why-is-my-room-hot"});
+const client=createClient({url:env("CLICKHOUSE_URL")??"http://localhost:8123",username:env("CLICKHOUSE_USER")??"default",password:env("CLICKHOUSE_PASSWORD"),database:env("CLICKHOUSE_DATABASE")??"hotroom",request_timeout:5000,application:"why-is-my-room-hot"});
 let prepared=false;
 
 async function prepare(){if(prepared)return;await client.command({query:"CREATE TABLE IF NOT EXISTS apartment_events (event_id UUID, room_id String, event_type LowCardinality(String), temperature Nullable(Float64), action Nullable(String), amount_cents Nullable(Int64), payload String, occurred_at DateTime64(3, 'UTC')) ENGINE = MergeTree() ORDER BY (room_id, occurred_at)"});prepared=true;}
