@@ -1,9 +1,9 @@
-# Session snapshot — 12 Sep 2026
+# Session snapshot — 13 Sep 2026
 
 ## Running locally
 
 ```bash
-cd why-is-my-room-hot
+cd "/Users/kmsum/Downloads/Why So Hot/why-is-my-room-hot"
 npm install
 npm run dev
 ```
@@ -12,11 +12,18 @@ npm run dev
 - API: http://127.0.0.1:3000
 - Health: http://127.0.0.1:3000/api/clickhouse/health
 
+## GitHub
+
+- Fork: https://github.com/yahgoo/why-is-my-room-hot
+- Branch: `main` (synced)
+- Latest commit: `82c1071` — ClickHouse Cloud setup + session notes
+- GitHub CLI: logged in as `yahgoo`
+
 ## What works
 
 | Integration | Status |
 |-------------|--------|
-| App (in-memory demo rooms) | Running |
+| App (in-memory demo rooms) | Ready |
 | ClickHouse Cloud (Option B) | Connected — `hotroom` database + `apartment_events` table created |
 | Airwallex sandbox keys | Configured in local `.env` |
 | OpenAI live agent | Not configured (`OPENAI_API_KEY` empty — test fixture mode) |
@@ -27,7 +34,7 @@ npm run dev
 - Host: `ac6l4ci6se.ap-southeast-1.aws.clickhouse.cloud:8443`
 - Database: `hotroom`
 - User: `default`
-- Credentials: local `.env` only (not committed)
+- Password: local `.env` only (not committed)
 
 Verify:
 
@@ -50,4 +57,4 @@ curl http://127.0.0.1:3000/api/clickhouse/health
 
 ## Secrets
 
-All secrets live in `.env` (gitignored). Copy from `.env.example` and fill locally.
+All secrets live in `.env` (gitignored). Local backup notes in `../hot.txt` (parent folder, not in git).
